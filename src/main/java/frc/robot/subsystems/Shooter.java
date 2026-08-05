@@ -29,7 +29,7 @@ public Shooter {
 
 	shooterMotorConfig = new TalonFXConfiguration
 	shooterMotorConfig.NeutralMode = Coast;
-
+}
 
 public Command setAngle(){
 	return this.run(() -> angleMotor.setAngle(Constants.ShooterConstants.shootAngle));
