@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.motorcontrol.TalonFX;
 import edu.wpi.first.wpilibj.motorcontrol.TalonFXConfiguration;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.motorcontrol.PWMMotorController;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase{
 	private final TalonFX angleMotor;
@@ -27,7 +29,7 @@ public Shooter {
 
 	shooterMotorConfig = new TalonFXConfiguration
 	shooterMotorConfig.NeutralMode = Coast;
-}
+
 
 public Command setAngle(){
 	return this.run(() -> angleMotor.setAngle(Constants.ShooterConstants.shootAngle));
@@ -37,14 +39,9 @@ public Command shoot(){
 	return this.run(() -> shooterMotor.setSpeed(Constants.ShooterConstants.SHOOTER_MOTOR_SPEED));
 }
 
-public double getEncoder(){
-	return absoluteEncoder.getPosition();
-}
-
-public double getShooterMotorSpeed(){
-	return shooterMotor.getSpeed();
-}
-
 @Override
-SmartDashboard absoluteEncoder.getEncoder();
-SmartDashboard shooterMotor.getShooterMotorSpeed();
+public void periodic(){
+	SmartDashboard.putNumber("Encoder Position", absoluteEncoder.get());
+	SmartDashboard.putNumber("Shooter Motor PWM", shooterMotor.get());
+
+}
