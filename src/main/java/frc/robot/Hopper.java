@@ -1,5 +1,4 @@
 package frc.robot;
-
 import edu.wpi.first.wpilibj.motorcontrol.PWMMotorController;
 import edu.wpi.first.wpilibj.motorcontrol.PWMTalonFX;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -10,7 +9,7 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 
 
 
-public class Hooper extends SubsystemBase {
+public class Hopper extends SubsystemBase {
 private TalonFX indexerMotor; 
 private TalonFX hopporMotor;
 private RobotContainer RobotContainer;
@@ -19,16 +18,17 @@ private Port Port;
 private PWMMotorController indexMotor;
 
 
-public Hooper( ) {
-hopporMotor = new TalonFX hopporMotor;
+public Hopper( ) {
+hopperMotor = new TalonFX hopperMotor; 
 indexerMotor = new TalonFX indexerMotor;
-hopporMotor = new TalconFX(HopperConstants.MOTOR_ID);
+hopperMotor = new TalconFX(HopperConstants.MOTOR_ID);
 indexerMotor = new TalconFX(HopperConstants.MOTOR_ID);
-hopporMotor.getConfigurator().apply(TalonFXConfiguration);
+hopperMotor.getConfigurator().apply(TalonFXConfiguration);
 indexerMotor.getConfigurator().apply(TalonFXConfiguration);
 Port Port  = new Port();
 RobotContainer  = new RobotContainer();
 Constants = new Constants();
+
 
 
 }
@@ -39,7 +39,7 @@ return this.run(() -> indexerMotor.set(HopperConstants.MOTORSPEED));
 }
 
 public Command reverseIndexer() {
-return this.run(()-> indexerMotor.set(!HopperConstants. ));
+return this.run(()-> indexerMotor.set(!HopperConstants.MOTORSPEED ));
 }
 
 
@@ -49,18 +49,23 @@ return this.runOnce(() -> indexMotor.set(0));
 
 
 public Command runHopperMotor() {
-return this.run(() -> hopporMotor.set(HopperConstants.MOTOR_SPEED));
+return this.run(() -> hopperMotor.set(HopperConstants.MOTORSPEED));
 	}
 
 public Command stopHopperMotor() {
-return this.runOnce(()-> hopporMotor.set(0));
+return this.runOnce(() -> hopperMotor.set(0));
 	}
 
 
 
 public Command reverseHopperMotor() {
-return this.run(() -> hopporMotor.set(!HopperConstants.HOPPERMOTOR_SPEED));
+return this.run(() -> hopperMotor.set(!HopperConstants.MOTORSPEED));
 	}
+
+public void setHopperMotorLimitation(void hopperMotorLimitation) {
+	this.hopperMotorLimitation = hopperMotorLimitation;
+
+}
 }
  
 

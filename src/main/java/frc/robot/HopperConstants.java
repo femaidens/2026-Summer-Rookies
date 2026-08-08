@@ -15,7 +15,7 @@ public class HopperConstants {
 
 }
 
-    public static final String MOTORSPEED = null;
+    public final String MOTORSPEED = null;
 
       public static Object MOTOR_SPEED;
 }
