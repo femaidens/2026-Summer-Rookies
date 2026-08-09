@@ -1,7 +1,7 @@
 package frc.robot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.HopperConstants;
+import frc.robot.Constants;
 import frc.robot.Port.HopperPort;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -17,10 +17,10 @@ public class Hopper extends SubsystemBase {
 
   public Hopper() {
     TalonFXConfiguration config = new TalonFXConfiguration();
-    indexerMotor = new TalonFX(HopperPort.INDEXER_MOTOR, Constants.HopperConstants.CANBUS);
-    hopperMotor = new TalonFX(HopperPort.HOPPER_MOTOR, Constants.HopperConstants.CANBUS);
-    configureTalonMotor(indexerMotor, Constants.HopperConstants.INDEXER_CURRENT_LIMIT);
-    configureTalonMotor(hopperMotor, Constants.HopperConstants.HOPPER_CURRENT_LIMIT);
+    indexerMotor = new TalonFX(HopperPort.INDEXER_MOTOR, Constants.HopperConstants.canbus);
+    hopperMotor = new TalonFX(HopperPort.HOPPER_MOTOR, Constants.HopperConstants.canbus);
+    configureTalonMotor(indexerMotor, Constants.HopperConstants.IndexerMOTOR_SPEED_Limitation);
+    configureTalonMotor(hopperMotor, Constants.HopperConstants.HopperMOTOR_SPEED_Limitation);
     indexerMotor.getConfigurator().apply(config);
     hopperMotor.getConfigurator().apply(config);
   }
