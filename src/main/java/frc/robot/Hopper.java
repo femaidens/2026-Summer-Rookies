@@ -1,18 +1,16 @@
 package frc.robot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.HopperConstants;
 import frc.robot.Port.HopperPort;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 
 
-public class Hopper extends SubsystemBase {
-private final TalonFX indexerMotor; 
+public class Hopper extends SubsystemBase private final TalonFX indexerMotor; 
 private final TalonFX hopperMotor;
 private RobotContainer RobotContainer;
-private HopperConstants HopperConstants;
+private Constants HopperConstants;
 private Port Port;
 
 
