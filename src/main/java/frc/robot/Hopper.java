@@ -21,17 +21,13 @@ public Hopper( ) {
 TalonFXConfiguration config = new TalonFXConfiguration();
 indexerMotor = new TalonFX(HopperPort.INDEXER_MOTOR, HopperConstants.canbus);
 hopperMotor= new TalonFX(HopperPort.HOPPER_MOTOR, HopperConstants.canbus);
-HopperMotor.getConfigurator().apply(TalonFXConfiguration);
+hopperMotor.getConfigurator().apply(TalonFXConfiguration);
 indexerMotor.getConfigurator().apply(TalonFXConfiguration);
 Port Port  = new Port();
 RobotContainer  = new RobotContainer();
 HopperConstants = new HopperConstants();
 
-
 }
-
-
-
 
 
 public Command runIndexer() {

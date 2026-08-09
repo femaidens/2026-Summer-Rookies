@@ -1,10 +1,9 @@
 
 package frc.robot;
-import edu.wpi.first.wpilibj.CAN;
+import com.ctre.phoenix6.CANBus;
 
 public  class HopperConstants {
       
-     
 
 	public static final CAN canbus = new CANBus("rio");
       private static final double MOTOR_SPEED = 0.5;

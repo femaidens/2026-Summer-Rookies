@@ -6,29 +6,27 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj2.command.button.CommandGenericHID;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
-import frc.robot.subsystems.Hopper;
-import frc.robot.Constants.OperatorConstants;
+import frc.robot.Hopper;
+import frc.robot.HopperConstants;
 
 
 public class RobotContainer {
-   private final Hopper hopper;
+  private final Hopper Hopper = new Hopper();
 
-  private final CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.kDriverControllerPort),
-  hopper = new Hopper();
+  private final CommandXboxController m_driverController =
+      new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
-  public RobotContainer() {configureBindings();
+  public RobotContainer() {
+    configureBindings();
   }
 
-private void configureBindings() {
-  
-m_driverController.a();onTrue(hopper.runIndexer()).onFasle(hopper.stopIndexer());
+  private void configureBindings() {
+    m_driverController.a().onTrue(Hopper.runIndexer()).onFalse(Hopper.stopIndexer());
+   
+    m_driverController.a().whileTrue(Hopper.reverseIndexer());
 
-m_driverController.a();whileTrue(hopper.reverseIndexer());
- 
-m_driverController.x();onTrue(hopper.runHopperMotor()).onFasle(hopper.stopHopperMotor());
-
-m_driverController.x();whileTrue(hopper.reverseHopperMotor());
-
+    m_driverController.x().onTrue(Hopper.runHopperMotor()).onFalse(Hopper.stopHopperMotor());
+   
+    m_driverController.x().whileTrue(Hopper.reverseHopperMotor());
   }
-  }
-  
+}  
