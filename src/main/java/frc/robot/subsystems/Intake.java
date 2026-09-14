@@ -1,38 +1,3 @@
-//So what is the function of the intake in the 2026 FRC robotics game REBUILT?
-//Function
-// 1) collect fuel foam pieces from the floor as fast as possible 
-	// 2) feed fuel pieces into the spindexer as smoothly and fast as possible
-// 3)  Have control over the pieces so other robots can't steal or disrupt the intake process 
-//How it works   
-	// 1) Intake is at resting position above ground
-	// 2) Driver presses down button
-	// 3) Intake pivots down   
-	// 4) Driver presses intake button  
-	// 5) Intake spins green compliant wheels 
-	// 6) Balls are pulled/sucked into intake    
-	// 7) Balls move up ramp into hopper (then spindexer)
-	// 8) Driver presses up button  
-	// 9) Intake pivots back up to resting position 
-//Mechanisms involved:  
-	// Pivot motor
-	// Wheel roller motor
-	//Absolute encoder measures intake angle
-	// That's all I can think of so far bc I think the pully-shaft stuff is just like automatically happening with the motors like hardware integrated or sum
-
-//What methods would there have to be?
-	//pivot motor 0.5 to spin up
-//pivot motor - 0.5 to spin down
-//roller motor -0.5 to spin wheels backward and intake balls
-//roller motor 0.5 to spin wheels forward and eject clam clutter
-//method to put roller motor at 0 to stop spinning   
-//method to stop pivot motor, leave it at rest  
-//method to make sure pivot is not going too up or down than possible
-//set pivot angle PID
-//set pivot speed anything
-//All of this would be seperate methods the driver would control in teleop.  
-//In auton, you'd have one method that forms a controlled loop of the other methods so they all run in progression and depending on different factors everything gets executed automatically.
-
-//CODE:  
 public class Intake extends SubsystemBase{
 
 	//FIELD 
@@ -72,6 +37,7 @@ public class Intake extends SubsystemBase{
 		helperGoUp();
 		}
 	}
+	//makes this run in the background so it automatically fixes anything at any time
 	@Override 
 	public void periodic(){
 		safetyCheck();
@@ -90,16 +56,17 @@ public class Intake extends SubsystemBase{
 		}
 		return true;
 	}
-	
+	//emergency stop
 	public void stopPivot(){
 	pivotMotor.set(0.0);
 	}
 	
 	//PIVOT CONVENIENCE METHODS  
+	//if the driver wants to set it to a specific speed, here it is
 	public void setSpeed(double speed) {
 		pivotMotor.set(MathUtil.clamp(speed, -0.5, 0.5));
 	}
-	//temporary PID setup (pseudocode so i'll make it more technical later)
+	//temporary PID setup (it's pseudocode so i'll make it more accurate later)
 	public void goToExactPosition(double setAngle){
 	  if (getAbsolutePosition() > setAngle){
 	helperGoDown();
@@ -157,9 +124,4 @@ public class Intake extends SubsystemBase{
 	public Command ejectFuelCmd(){
 		return run(() -> intake.ejectFuel());
 		}
-	//AUTO idk if we need to do this but maybe 
-	//command it to intake if we sense a ball 
-	//command it to eject if its too full
-	//command it to go up if we are intaking
-	//command it to go down if we are not intaking anymore 
 	
