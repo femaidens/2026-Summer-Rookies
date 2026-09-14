@@ -12,8 +12,19 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class Constants {
-  public static class OperatorConstants {
+public final class Constants{
+  //Pivot measurements 
+  public static final double MAX_PIVOT_HEIGHT = 8.0;  
+  public static final double MIN_PIVOT_HEIGHT = 0.2; 
+  //PID   
+  public static final double K_P = 0.001;   
+  public static final double K_I = 0.0; 
+  public static final double K_D = 0.001;
+
+  public static final class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
-}
+
+  }
+
+  
