@@ -8,8 +8,9 @@ public  class Constants {
       
 	public static final CANBus canbus = new CANBus("rio");
       public static final double MOTORSPEED= 0.5;
-      public static final int HopperMOTOR_SPEED_Limitation = 40;
-      public static final int IndexerMOTOR_SPEED_Limitation = 30;
+      public static final double MOTORFASTSPEED= 1.0;
+      public static final int HopperMOTOR_CURRENT_Limitation = 40;
+      public static final int IndexerMOTOR_CURRENT_Limitation = 30;
        
 }
       public static class OperatorConstants{
