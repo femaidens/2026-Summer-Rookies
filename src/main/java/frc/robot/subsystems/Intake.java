@@ -76,16 +76,6 @@ public class Intake extends SubsystemBase {
 		}
 	}
 
-	// makes this run in the background so it automatically fixes anything at any
-	// time
-	@Override
-	public void periodic() {
-		safetyCheck();
-	}
-	// okay I really don't like how override and regular go to this point both
-	// command the pivot motor (AND use the same PID method) and since one is
-	// periodic wouldn't that cause conflicts??
-
 	// checks if it can actually go up or down, this is the preventative safety
 	// measure so we don't command anything wrong
 	public boolean canGoUp() {
@@ -198,6 +188,17 @@ public class Intake extends SubsystemBase {
 		return this.run(() -> ejectFuel());
 	}
 
+// makes this run in the background so it automatically fixes anything at any
+	// time
+	@Override
+	public void periodic() {
+		safetyCheck();
+	}
+	// okay I really don't like how override and regular go to this point both
+	// command the pivot motor (AND use the same PID method) and since one is
+	// periodic wouldn't that cause conflicts??
+
 }
 // in the commands how do i make it so the manual up/down for pivot and
 // intake/eject movements stop when the button is released vs pressed?
+

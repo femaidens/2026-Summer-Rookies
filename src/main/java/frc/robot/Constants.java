@@ -28,7 +28,7 @@ public static final double UP_SETPOINT = 280;
 public static final double DOWN_SETPOINT = 200;
 
 public static class OperatorConstants {
-    public static final int kDriverControllerPort = 0;
+    public static final int OPERATOR_PORT = 0;
   }
 
 }
