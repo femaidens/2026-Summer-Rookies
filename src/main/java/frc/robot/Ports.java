@@ -1,3 +1,12 @@
+package frc.robot;
+
+public class Ports {
+public class IntakePorts{
+    public static final int ROLLER_MOTOR_PORT = 1;
+    public static final int PIVOT_MOTOR_PORT = 7;
+    public static final int ABSOLUTE_ENCODER_PORT = 6;  
+}
+}
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
