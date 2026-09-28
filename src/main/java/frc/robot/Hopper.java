@@ -48,12 +48,30 @@ public class Hopper extends SubsystemBase {
     return this.run(() -> hopperMotor.set(-Constants.HopperConstants.MOTORSPEED));
   }
 
+  public void runHopper() {
+    indexerMotor.set(Constants.HopperConstants.MOTORFASTSPEED);
+    hopperMotor.set(Constants.HopperConstants.MOTORSPEED);   //set both motor speed all at the same time
+  }
+
+  public Command runHopperCmd() {
+    return this.run(() -> runHopper());
+  }
+
+  public void reverseHopper() {
+    indexerMotor.set(-Constants.HopperConstants.MOTORFASTSPEED);
+    hopperMotor.set(-Constants.HopperConstants.MOTORSPEED);   //set both motor speed all at the same time
+  }
+
+  public Command reverseHopperCmd() {
+    return this.run(() -> reverseHopper());
+  }
+
   public static void configureTalonMotor(TalonFX motor, double currentlimit, NeutralModeValue mode) {
     TalonFXConfiguration config = new TalonFXConfiguration();
     config.CurrentLimits.SupplyCurrentLimit = currentlimit;
     config.MotorOutput.NeutralMode = mode;
     motor.getConfigurator().apply(config);
   }
- 
+
 
 }
