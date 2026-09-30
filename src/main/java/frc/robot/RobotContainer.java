@@ -32,7 +32,7 @@ public class RobotContainer {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
   
         operJoy.povUp().whileTrue(intake.goUpCmd());
-        operJoy.povUp().whileTrue(intake.goDownCmd());
+        operJoy.povDown().whileTrue(intake.goDownCmd());
         operJoy.povRight().onTrue(intake.goUpToPositionCmd()).whileFalse(intake.stopPivotCmd());
         operJoy.povLeft().onTrue(intake.goDownToPositionCmd()).whileFalse(intake.stopPivotCmd());
         operJoy.b().whileTrue(intake.intakeFuelCmd()).whileFalse(intake.stopRollersCmd());
