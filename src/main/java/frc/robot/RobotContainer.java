@@ -31,8 +31,8 @@ public class RobotContainer {
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
   
-        operJoy.povUpRight().whileTrue(intake.goUpCmd());
-        operJoy.povUpLeft().whileTrue(intake.goDownCmd());
+        operJoy.povUp().whileTrue(intake.goUpCmd());
+        operJoy.povUp().whileTrue(intake.goDownCmd());
         operJoy.povRight().onTrue(intake.goUpToPositionCmd()).whileFalse(intake.stopPivotCmd());
         operJoy.povLeft().onTrue(intake.goDownToPositionCmd()).whileFalse(intake.stopPivotCmd());
         operJoy.b().whileTrue(intake.intakeFuelCmd()).whileFalse(intake.stopRollersCmd());
