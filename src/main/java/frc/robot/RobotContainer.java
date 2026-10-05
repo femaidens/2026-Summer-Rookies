@@ -34,22 +34,30 @@ public class RobotContainer {
         operJoy.povRight().onTrue(intake.goUpToPositionCmd()).whileFalse(intake.stopPivotCmd());
         operJoy.povLeft().onTrue(intake.goDownToPositionCmd()).whileFalse(intake.stopPivotCmd());
         operJoy.b().whileTrue(intake.intakeFuelCmd()).whileFalse(intake.stopRollersCmd());
-        operJoy.leftBumper().whileTrue(intake.ejectFuelCmd());       
+        operJoy.leftBumper().whileTrue(intake.ejectFuelCmd());  
+        
+        operJoy.a().onTrue(Hopper.runIndexer()).whileFalse(Hopper.stopIndexerCmd());
+        operJoy.a().whileTrue(Hopper.reverseIndexer());
+        operJoy.x().onTrue(Hopper.runHopperMotor()).whileFalse(Hopper.stopHopperMotorCmd());
+        operJoy.x().whileTrue(Hopper.reverseHopperMotor());
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
   }
+}
   //public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     //return Autos.exampleAuto(m_exampleSubsystem);
   //}
-}
-    m_driverController.a().onTrue(Hopper.runIndexer()).onFalse(Hopper.stopIndexer());
-   
-    m_driverController.a().whileTrue(Hopper.reverseIndexer());
 
-    m_driverController.x().onTrue(Hopper.runHopperMotor()).onFalse(Hopper.stopHopperMotor());
+  //   m_driverController.a().onTrue(Hopper.runIndexer()).onFalse(Hopper.stopIndexer());
    
-    m_driverController.x().whileTrue(Hopper.reverseHopperMotor());
-  }
-}  
+  //   m_driverController.a().whileTrue(Hopper.reverseIndexer());
+
+  //   m_driverController.x().onTrue(Hopper.runHopperMotor()).onFalse(Hopper.stopHopperMotor());
+   
+  //   m_driverController.x().whileTrue(Hopper.reverseHopperMotor());
+
+
+  // }
+
