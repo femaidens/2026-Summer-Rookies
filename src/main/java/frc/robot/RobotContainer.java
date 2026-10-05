@@ -42,13 +42,10 @@ public class RobotContainer {
         operJoy.rightTrigger().onTrue(shooter.setAngle());
         operJoy.y().whileTrue(shooter.shoot()).whileFalse(shooter.stopShoot());
 
-    m_driverController.a().onTrue(Hopper.runIndexer()).onFalse(Hopper.stopIndexer());
-   
-    m_driverController.a().whileTrue(Hopper.reverseIndexer());
-
-    m_driverController.x().onTrue(Hopper.runHopperMotor()).onFalse(Hopper.stopHopperMotor());
-   
-    m_driverController.x().whileTrue(Hopper.reverseHopperMotor());
+        operJoy.a().onTrue(Hopper.runIndexer()).whileFalse(Hopper.stopIndexer());
+        operJoy.a().whileTrue(Hopper.reverseIndexer());
+        operJoy.x().onTrue(Hopper.runHopperMotor()).whileFalse(Hopper.stopHopperMotor());
+        operJoy.x().whileTrue(Hopper.reverseHopperMotor());
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
