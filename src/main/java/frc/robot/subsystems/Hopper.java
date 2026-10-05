@@ -45,7 +45,7 @@ public class Hopper extends SubsystemBase {
     return this.runOnce(() -> hopperMotor.set(0));
   }
 
-  //public Command reverseHopperMotor() { 
+  public Command reverseHopperMotor() { 
    return this.run(() -> hopperMotor.set(-Constants.HopperConstants.MOTORSPEED));
   }
 
@@ -73,3 +73,4 @@ public class Hopper extends SubsystemBase {
     config.MotorOutput.NeutralMode = mode;
     motor.getConfigurator().apply(config);
   }
+}
