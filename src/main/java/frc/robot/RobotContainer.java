@@ -31,8 +31,8 @@ public class RobotContainer {
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
   
-        operJoy.povRight().whileTrue(intake.goUpCmd());
-        operJoy.povLeft().whileTrue(intake.goDownCmd());
+        operJoy.povUp().whileTrue(intake.goUpCmd());
+        operJoy.povDown().whileTrue(intake.goDownCmd());
         operJoy.povRight().onTrue(intake.goUpToPositionCmd()).whileFalse(intake.stopPivotCmd());
         operJoy.povLeft().onTrue(intake.goDownToPositionCmd()).whileFalse(intake.stopPivotCmd());
         operJoy.b().whileTrue(intake.intakeFuelCmd()).whileFalse(intake.stopRollersCmd());
@@ -42,22 +42,20 @@ public class RobotContainer {
         operJoy.rightTrigger().onTrue(shooter.setAngle()).whileFalse(shooter.stopSetAngle());
         operJoy.y().whileTrue(shooter.shoot()).whileFalse(shooter.stopShoot());
 
-    m_driverController.a().onTrue(Hopper.runIndexer()).onFalse(Hopper.stopIndexer());
-   
-    m_driverController.a().whileTrue(Hopper.reverseIndexer());
-
-    m_driverController.x().onTrue(Hopper.runHopperMotor()).onFalse(Hopper.stopHopperMotor());
-   
-    m_driverController.x().whileTrue(Hopper.reverseHopperMotor());
+        operJoy.a().onTrue(Hopper.runIndexer()).whileFalse(Hopper.stopIndexer());
+        operJoy.leftTrigger().whileTrue(Hopper.reverseIndexer());
+        operJoy.x().onTrue(Hopper.runHopperMotor()).whileFalse(Hopper.stopHopperMotor());
+        operJoy.rightBumper().whileTrue(Hopper.reverseHopperMotor());
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
   }
+}
   //public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     //return Autos.exampleAuto(m_exampleSubsystem);
   //}
 
     
-  }
+
 
