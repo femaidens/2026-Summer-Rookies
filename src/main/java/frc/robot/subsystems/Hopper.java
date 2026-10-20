@@ -66,6 +66,10 @@ public class Hopper extends SubsystemBase {
   public Command reverseHopperCmd() {
     return this.run(() -> reverseHopper());
   }
+  
+  public Command reverseHopperSafetyMethodCmd() {
+    return this.run(() -> reverseHopper());
+  }
 
   public static void configureTalonMotor(TalonFX motor, double currentlimit, NeutralModeValue mode) {
     TalonFXConfiguration config = new TalonFXConfiguration();
