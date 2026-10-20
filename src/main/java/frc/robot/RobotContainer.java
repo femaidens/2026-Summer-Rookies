@@ -43,9 +43,9 @@ public class RobotContainer {
         operJoy.y().whileTrue(shooter.shoot()).whileFalse(shooter.stopShoot());
 
         operJoy.a().onTrue(Hopper.runIndexer()).whileFalse(Hopper.stopIndexer());
-        operJoy.leftTrigger().whileTrue(Hopper.reverseIndexer());
+        operJoy.leftTrigger().whileTrue(Hopper.reverseIndexer()).whileFalse(Hopper.stopIndexer());;
         operJoy.x().onTrue(Hopper.runHopperMotor()).whileFalse(Hopper.stopHopperMotor());
-        operJoy.rightBumper().whileTrue(Hopper.reverseHopperMotor());
+        operJoy.rightBumper().whileTrue(Hopper.reverseHopperMotor()).whileFalse(Hopper.stopHopperMotor());;
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
