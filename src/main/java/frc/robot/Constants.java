@@ -56,7 +56,6 @@ public static class IntakeConstants {
     public static final double SHOOTER_MOTOR_SPEED = -0.55;
     public static final double SHOOTER_CRUISE_SPEED = -0.05;
     public static final double ANGLE_MOTOR_SPEED = 0.1;
-    public static final double SHOOTER_ANGLE = 56;
 
     public static final CANBus CANBUS = new CANBus("rio");
       

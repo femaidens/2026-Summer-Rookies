@@ -40,7 +40,7 @@ public Shooter() {
 }
 
 public Command setAngle(){
-	return this.run(() -> angleMotor.set(Constants.ShooterConstants.SHOOTER_ANGLE));
+	return this.run(() -> angleMotor.set(Constants.ShooterConstants.ANGLE_MOTOR_SPEED));
 }
 
 public Command shoot(){
@@ -48,7 +48,11 @@ public Command shoot(){
 }
 
 public Command stopShoot(){
-	return this.run(() -> shooterMotor.set(0));
+	return this.run(() -> shooterMotor.set(0));hgv 
+}
+
+public Command stopSetAngle(){
+	return this.run(() -> angleMotor.set(0));
 }
 
 @Override

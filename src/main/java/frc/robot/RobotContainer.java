@@ -39,7 +39,7 @@ public class RobotContainer {
         operJoy.leftBumper().whileTrue(intake.ejectFuelCmd());
         
         //Binding shooter
-        operJoy.rightTrigger().onTrue(shooter.setAngle());
+        operJoy.rightTrigger().onTrue(shooter.setAngle()).whileFalse(shooter.stopSetAngle());
         operJoy.y().whileTrue(shooter.shoot()).whileFalse(shooter.stopShoot());
 
     m_driverController.a().onTrue(Hopper.runIndexer()).onFalse(Hopper.stopIndexer());
