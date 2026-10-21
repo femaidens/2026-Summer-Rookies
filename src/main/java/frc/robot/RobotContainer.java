@@ -42,6 +42,7 @@ public class RobotContainer {
         operJoy.rightTrigger().whileTrue(shooter.setAngle()).onFalse(shooter.stopSetAngle());
         operJoy.y().whileTrue(shooter.shoot()).whileFalse(shooter.stopShoot());
         operJoy.back().onTrue(shooter.stopSetAngle());
+        operJoy.leftBumper().whileTrue(shooter.reverseSetAngle()).onFalse(shooter.stopSetAngle());
 
         operJoy.a().onTrue(Hopper.runIndexer()).whileFalse(Hopper.stopIndexer());
         operJoy.leftTrigger().whileTrue(Hopper.reverseIndexer()).whileFalse(Hopper.stopIndexer());;
