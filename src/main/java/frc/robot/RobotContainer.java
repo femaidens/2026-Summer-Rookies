@@ -33,14 +33,15 @@ public class RobotContainer {
   
         operJoy.povUp().whileTrue(intake.goUpCmd());
         operJoy.povDown().whileTrue(intake.goDownCmd());
-        operJoy.povRight().onTrue(intake.goUpToPositionCmd()).whileFalse(intake.stopPivotCmd());
-        operJoy.povLeft().onTrue(intake.goDownToPositionCmd()).whileFalse(intake.stopPivotCmd());
+        operJoy.povRight().onTrue(intake.goUpToPositionCmd()).onFalse(intake.stopPivotCmd());
+        operJoy.povLeft().onTrue(intake.goDownToPositionCmd()).onFalse(intake.stopPivotCmd());
         operJoy.b().whileTrue(intake.intakeFuelCmd()).whileFalse(intake.stopRollersCmd());
         operJoy.leftBumper().whileTrue(intake.ejectFuelCmd());
-        
+        operJoy.start().onTrue(intake.stopPivotCmd());
         //Binding shooter
-        operJoy.rightTrigger().onTrue(shooter.setAngle()).whileFalse(shooter.stopSetAngle());
+        operJoy.rightTrigger().whileTrue(shooter.setAngle()).onFalse(shooter.stopSetAngle());
         operJoy.y().whileTrue(shooter.shoot()).whileFalse(shooter.stopShoot());
+        operJoy.back().onTrue(shooter.stopSetAngle());
 
         operJoy.a().onTrue(Hopper.runIndexer()).whileFalse(Hopper.stopIndexer());
         operJoy.leftTrigger().whileTrue(Hopper.reverseIndexer()).whileFalse(Hopper.stopIndexer());;

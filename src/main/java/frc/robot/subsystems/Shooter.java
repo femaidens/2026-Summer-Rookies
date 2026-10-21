@@ -48,7 +48,7 @@ public Command shoot(){
 }
 
 public Command stopShoot(){
-	return this.run(() -> shooterMotor.set(0));hgv 
+	return this.run(() -> shooterMotor.set(0)); 
 }
 
 public Command stopSetAngle(){
