@@ -55,6 +55,10 @@ public Command stopSetAngle(){
 	return this.run(() -> angleMotor.set(0));
 }
 
+public Command reverseSetAngle(){
+	return this.run(() -> angleMotor.set(-Constants.ShooterConstants.ANGLE_MOTOR_SPEED));
+}
+
 @Override
 public void periodic(){
 	SmartDashboard.putNumber("Encoder Position", absoluteEncoder.get());

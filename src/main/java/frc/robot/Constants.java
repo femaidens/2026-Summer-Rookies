@@ -32,7 +32,7 @@ public static final double K_D = 0;
 
 //place holder setpoint values 
 public static final double UP_SETPOINT = 280;
-public static final double DOWN_SETPOINT = 200;
+public static final double DOWN_SETPOINT = 50;
 
 public static class IntakeConstants {
     public static final int CURRENT_LIMIT = 30;

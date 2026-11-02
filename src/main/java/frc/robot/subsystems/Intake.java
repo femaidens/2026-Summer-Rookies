@@ -173,7 +173,7 @@ public class Intake extends SubsystemBase {
 	}
 
 	public Command stopPivotCmd() {
-		return this.runOnce(() -> pivotMotor.set(0.0));
+		return this.run(() -> stopPivot());
 	}
 
 	public Command stopRollersCmd() {
