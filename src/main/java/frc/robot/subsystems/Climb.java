@@ -2,56 +2,86 @@ package frc.robot.subsystems;
 
 import java.lang.module.Configuration;
 
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Climb extends SubsystemBase {
     private final TalonFX leaderMotor;
     private final TalonFX followerMotor;
     private final DigitalInput limitswitch;
-    private final Configuration leaderMotorConfig;
-    private final Configuration followerMotorConfig;
+    private final TalonFXConfiguration leaderMotorConfig;
+    private final TalonFXConfiguration followerMotorConfig;
+    private final PIDController pid;
 
     public Climb() {
 
         leaderMotor = new TalonFX(0);
         followerMotor = new TalonFX(1);   
-        limitswitch= new DigitalInput(2);     
+        limitswitch= new DigitalInput(2);   
+        pid = new PIDController(0.1, 0, 0.2);
         //configs
-        leaderMotorConfig =
+        leaderMotorConfig = new TalonFXConfiguration();
+        leaderMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+        leaderMotor.getConfigurator().apply(leaderMotorConfig);
+
+        followerMotorConfig = new TalonFXConfiguration();
+        followerMotorConfig.MotorOutput.NeutralMode = NeutralModeValue.Brake;
+        followerMotor.getConfigurator().apply(followerMotorConfig);
+    
     }
 
     public void setSpeed(){
-        leaderMotor.setSpeed(Constants.SPEED);
-        followerMotor.setSpeed(Constants.SPEED);
+        leaderMotor.set(0.5);
+        followerMotor.set(0.5);
     }
 
     public void reverseSpeed(){
-        leaderMotor.setSpeed(-Constants.SPEED);
-        followerMotor.setSpeed(-Constants.SPEED);
+        leaderMotor.set(-0.5);
+        followerMotor.set(-0.5);
     }
     
     public void stop(){
-        leaderMotor.setSpeed(0.0);
-        followerMotor.setSpeed(0.0);
+        leaderMotor.set(0.0);
+        followerMotor.set(0.0);
     }    
 
     public boolean getLimitswitch(){
-        limitswitch.get();
+        return limitswitch.get();
     }
 
     public void upClimb(){
         if (getLimitswitch()){
-            reverseSpeed();
+            stop();
         }
+    }
+
+    public void climbPID(double setpoint){
+        leaderMotor.setVoltage(pid.calculate())
     }
 
     //COMMANDS
 
     public Command upClimbCmd(){
-        this.run(()-
+       return this.run(() -> upClimb());
+    }
+
+    public Command stopCmd(){
+       return this.run(() -> stop());
+    }
+
+    public Command reverseSpeedCmd(){
+       return this.run(() -> reverseSpeed());
+    }
+
+    public Command setSpeedCmd(){
+       return this.run(() -> setSpeed());
     }
 
 }
