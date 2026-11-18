@@ -62,8 +62,12 @@ public class Climb extends SubsystemBase {
         }
     }
 
-    public void climbPID(double setpoint){
-        leaderMotor.setVoltage(pid.calculate())
+    public void climbUpPID(double setpoint){
+        leaderMotor.setVoltage(pid.calculate(leaderMotor.getPosition().getValueAsDouble(), setpoint));
+    }
+
+    public void climbDownPID(double setpoint){
+        followerMotor.setVoltage(pid.calculate(followerMotor.getPosition().getValueAsDouble(), setpoint));
     }
 
     //COMMANDS
